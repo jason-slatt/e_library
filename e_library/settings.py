@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +28,21 @@ SECRET_KEY = 'django-insecure-%347v!1rthec3mx$aqlp2ig7&uo9s-uaqbl&h0jvlpi8aqr-8z
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
+AUTH_USER_MODEL = 'users.User'
+
+env = environ.Env()
+environ.Env.read_env()
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('AA_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('AA_EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 
 # Application definition
@@ -46,13 +63,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
     'drf_yasg',
+    'users',
+    'user_auth',
     'books',
     'borrowing',
     'notifications',
-    'users',
-    'user_auth'
+   
     
 ]
 
