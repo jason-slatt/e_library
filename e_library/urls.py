@@ -23,8 +23,8 @@ from django.urls import path , include
 urlpatterns = [
     path('admin/', admin.site.urls),
     ##path('users/', include('users.urls')),
-    ##path('books/', include('books.urls')),
-    ##path('borrowing/', include('borrowing.urls')),
+    path('books/', include('books.urls')),
+    path('borrowing/', include('borrowing.urls')),
     ##path('notifications/', include('notifications.urls')),
     path('user_auth/', include('user_auth.urls')) 
 ]

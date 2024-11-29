@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
 from .models import User
+from books.models import Book
 from user_auth.models import UserRole, RoleChoices
 
 class UserRoleInline(admin.TabularInline):
